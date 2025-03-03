@@ -1,0 +1,31 @@
+using System;
+
+class SecureClass 
+{
+    private int secureNum = 41;
+
+    private void ShowNum() 
+    {
+        Console.WriteLine("secure number : "+secureNum);
+    }
+    public void access() 
+    {
+        ShowNum();
+    }
+}
+class Program 
+{
+    public static void Main() 
+    {
+        SecureClass secure = new SecureClass();
+
+        // secure.secureNum = 21;
+        Console.WriteLine("The private number is accessed through a public method of the same class: ");
+
+        secure.access();
+    }
+}
+
+/*The private number is accessed through a public method of the same class:
+secure number : 41
+ */
