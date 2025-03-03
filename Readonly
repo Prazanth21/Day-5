@@ -1,0 +1,27 @@
+using System;
+using System.Globalization;
+
+class Person 
+{
+    public String Name { get; }
+    public  int Age { get; }
+
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+}
+class Program 
+{
+    public static void Main() 
+    {
+        Person obj = new Person("Prasanth",21);
+        Console.WriteLine($"Name: {obj.Name},\n Age : {obj.Age}");
+    }
+}
+
+
+/*Name: Prasanth,
+ Age : 21
+ */
