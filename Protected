@@ -1,0 +1,35 @@
+using System;
+
+class BaseClass 
+{
+    protected int number = 41;
+
+    protected void Display() 
+    {
+        Console.WriteLine("Accessed a Protected data  through Derived class : " +number);
+    }
+    
+}
+
+class DerivedClass : BaseClass
+{
+    public void Show() 
+    {
+        Console.WriteLine("number : "+number);
+        Display();
+    }
+
+}
+
+class Program 
+{
+    public static void Main() 
+    {
+        DerivedClass derived_obj = new DerivedClass();
+        derived_obj.Show();
+    }
+}
+
+/*number : 41
+Accessed a Protected data  through Derived class : 41
+ */
