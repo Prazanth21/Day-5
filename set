@@ -1,0 +1,46 @@
+using System;
+
+class Person
+{
+    private string name;
+    private int age;
+
+    public string Name
+    {
+        set { name = value; }
+    }
+
+    public int Age
+    {
+        set {
+            if (value >= 0 && value <= 120)
+                age = value;
+
+        }
+    }
+
+    public void Display() 
+    {
+        Console.WriteLine($"Name : {name}\n Age : {age} ");
+    }
+}
+
+class Program 
+{
+    public static void Main() 
+    {
+        Person person = new Person();
+        person.Name = "prasanth";
+        person.Age = 21;
+        person.Display();
+
+        
+    }
+}
+
+/*
+ Name : prasanth
+ Age : 21
+
+ */
+
