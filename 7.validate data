@@ -3,9 +3,10 @@ using System.Text.RegularExpressions;
 
 class User 
 {
-    public string name;
-    public int age;
-    public string email;
+    private string name;
+    private int age;
+    private string email;
+    private long number;
 
     public string Name 
     {
@@ -57,16 +58,32 @@ class User
         }
 
     }
-    public User(string name, int age, string email)
+    public long Number 
+    {
+        get 
+        {
+            return number;
+        }
+        set 
+        {
+            string numstr = value.ToString();
+            if (numstr.Length != 10)
+                throw new ArgumentException("the number should have 10 digits ");
+            number = value;
+
+        }
+    }
+    public User(string name, int age, string email , long number)
     {
         Name = name;
         Age = age;
         Email = email;
+        Number = number;
         
     }
     public void DisplayInfo()
     {
-        Console.WriteLine($"User Info:\n\n Name: {Name}\n Age: {Age}\n Email: {Email}");
+        Console.WriteLine($"User Info:\n\n Name: {Name}\n Age: {Age}\n Email: {Email}\n Number : {number}");
     }
 }
 
@@ -85,9 +102,12 @@ class Program
             Console.Write("Enter Email: ");
             string email = Console.ReadLine();
 
+            Console.Write("Enter Number: ");
+            long number = long.Parse(Console.ReadLine());
+
             Console.WriteLine("\n");
 
-            User user = new User(name, age, email);
+            User user = new User(name, age, email ,number);
 
             user.DisplayInfo();
 
@@ -100,13 +120,15 @@ class Program
 }
 
 
-/*Enter Name: Prasanth G
+/*Enter Name: Prazanth G
 Enter Age: 21
 Enter Email: Prazanth0@gmail.com
+Enter Number: 6381562264
 
 
 User Info:
 
- Name: Prasanth G
+ Name: Prazanth G
  Age: 21
- Email: Prazanth0@gmail.com*/
+ Email: Prazanth0@gmail.com
+ Number : 6381562264*/
