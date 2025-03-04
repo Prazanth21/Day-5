@@ -1,0 +1,112 @@
+using System;
+using System.Text.RegularExpressions;
+
+class User 
+{
+    public string name;
+    public int age;
+    public string email;
+
+    public string Name 
+    {
+        get 
+        {
+            return name;
+        }
+        set 
+        {
+            if (string.IsNullOrWhiteSpace(value)) 
+            throw new ArgumentException("Name cant be empty or whitespace: ");
+            if (value.Length < 3)
+                throw new ArgumentException("The length cant be less then 3 ");
+            name = value;
+
+        }
+    }
+    public int Age 
+    {
+        get 
+        {
+            return age;
+        }
+        set 
+        {
+            if (value < 18 || value > 100)
+                throw new ArgumentException("the age cannot be less then 18 and greater the 100");
+            age = value;
+        }
+    }
+    public string Email 
+    {
+        get 
+        {
+            return email;
+                
+        }
+        set 
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("the email cannot be empty or null ");
+
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(value, emailPattern))
+                throw new ArgumentException("Invalid email format.");
+
+            email = value;
+
+        }
+
+    }
+    public User(string name, int age, string email)
+    {
+        Name = name;
+        Age = age;
+        Email = email;
+        
+    }
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"User Info:\n\n Name: {Name}\n Age: {Age}\n Email: {Email}");
+    }
+}
+
+class Program 
+{
+    public static void Main()
+    {
+        try
+        {
+            Console.Write("Enter Name: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Enter Age: ");
+            int age = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter Email: ");
+            string email = Console.ReadLine();
+
+            Console.WriteLine("\n");
+
+            User user = new User(name, age, email);
+
+            user.DisplayInfo();
+
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine($"Enter a valid data : {ex.Message}");
+        }
+        }
+}
+
+
+/*Enter Name: Prasanth G
+Enter Age: 21
+Enter Email: Prazanth0@gmail.com
+
+
+User Info:
+
+ Name: Prasanth G
+ Age: 21
+ Email: Prazanth0@gmail.com*/
